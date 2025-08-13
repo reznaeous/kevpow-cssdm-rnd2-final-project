@@ -1,6 +1,6 @@
 :root {
-  --ff-sans: "IBM Plex Sans", sans-serif;
-  --ff-serif: "IBM Plex Serif", serif;
+  --ff-sans: 'IBM Plex Sans', sans-serif;
+  --ff-serif: 'IBM Plex Serif', serif;
 
   /* small screen font-sizes */
   --fs-200: 0.75rem;
@@ -28,6 +28,12 @@
   --br: 1rem;
 
   --spacer: 1rem;
+
+  @media screen and (width > 1000px) {
+    --fs-500: 1.75rem;
+    --fs-600: 2.125rem;
+    --fs-900: 4.25rem;
+  }
 }
 
 /* Reset */
@@ -63,11 +69,110 @@ img {
   display: block;
 }
 
+a {
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+}
+
+/* Basic layout */
+
+body {
+  font: {
+    family: var(--ff-serif);
+    size: var(--fs-400);
+  }
+}
+
+.primary {
+  &-header {
+    background-image: url(img/hero.jpg);
+    background-size: cover;
+    min-height: 25rem;
+    border: {
+      radius: 1rem;
+    }
+
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      padding: {
+        block: 2rem;
+        inline: 2rem;
+      }
+    }
+  }
+
+  &-nav {
+    &__list {
+      display: flex;
+      gap: var(--spacer);
+    }
+  }
+}
+
+.page {
+  &-title {
+    font: {
+      size: var(--fs-900);
+    }
+  }
+  &-intro {
+    font: {
+      size: var(--fs-600);
+    }
+  }
+}
+
+.section {
+  &-title,
+  &-subtitle {
+    font: {
+      size: var(--fs-600);
+    }
+  }
+}
+
+.article-preview {
+  h3 {
+    font: {
+      size: var(--fs-500);
+      weight: var(--fw-300);
+    }
+  }
+}
+
+/* Components */
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  border: unset;
+  background-color: inherit;
+  padding: {
+    inline: 1rem;
+    block: 0.75rem;
+  }
+  font: {
+    weight: var(--fw-700);
+  }
+  &::after {
+    content: '>';
+    margin: {
+      left: 1rem;
+    }
+  }
+}
+
 /* Utility */
-.flow-content > * + * {
+.flow > * + * {
   margin-top: var(--flow-spacer, var(--spacer));
 }
 
-.flow-content--large {
+.flow-large {
   --flow-space: 3rem;
+}
+
+.bg-primary-300 {
+  background-color: var(--clr-primary-300);
 }
