@@ -26,4 +26,48 @@
   --clr-primary-400: #8ea8da;
 
   --br: 1rem;
+
+  --spacer: 1rem;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+  margin: 0;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility */
+.flow-content > * + * {
+  margin-top: var(--flow-spacer, var(--spacer));
+}
+
+.flow-content--large {
+  --flow-space: 3rem;
 }
