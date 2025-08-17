@@ -26,7 +26,7 @@
     </header>
 
     <section class="intro text-serif">
-      <div class="container">
+      <div class="container flow">
         <h1 class="page-title">
           Lorem ipsum dolor sit amet, consectet adipiscing
         </h1>
@@ -64,7 +64,7 @@
         </header>
 
         <div class="split">
-          <article class="article-preview">
+          <article class="article-preview flow">
             <img src="img/blog-1.jpg" alt="electric drill" />
             <h3>Lorem ipsum dolor sit amet, consectet adipiscing</h3>
             <p>Lorem ipsum dolor sit amet, consectet adipiscing</p>
@@ -73,7 +73,7 @@
               <p>8 min read</p>
             </div>
           </article>
-          <article class="article-preview">
+          <article class="article-preview flow">
             <img src="img/blog-2.jpg" alt="cactus" />
             <h3>Lorem ipsum</h3>
             <p>Lorem ipsum dolor sit amet, consectet adipiscing</p>
@@ -82,7 +82,7 @@
               <p>8 min read</p>
             </div>
           </article>
-          <article class="article-preview">
+          <article class="article-preview flow">
             <img src="img/blog-3.jpg" alt="insulated water bottle" />
             <h3>Lorem ipsum dolor sit amet, consectet adipiscing</h3>
             <p>Lorem ipsum dolor sit amet, consectet adipiscing</p>
@@ -101,40 +101,53 @@
           <h2 class="section-title">Inbox</h2>
           <p class="section-subtitle">Knowledge letters</p>
         </header>
-        <img src="" alt="" />
+        <img src="img/newsletter.jpg" alt="" />
 
         <form action="" method="post" class="newsletter">
           <div>
-            <label for="">Name</label>
-            <input type="text" />
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+              required />
           </div>
           <div>
-            <label for="">Email</label>
-            <input type="email" name="" id="" />
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required />
+            <!-- Ugly, isn't it? Maybe some day, but for now let it go. -->
+            <!-- pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"  -->
           </div>
           <button class="btn" type="submit">Subscribe</button>
         </form>
       </div>
     </section>
 
-    <footer class="primary-footer">
+    <footer class="primary-footer container">
       <div class="primary-footer__inner">
         <a href="index.html" aria-label="acme home page">
           <img src="img/logo.svg" alt="" class="logo" />
         </a>
 
-        <dl>
-          <dt class="text-serif">Map</dt>
-          <dd><a href="#">Blog</a></dd>
-          <dd><a href="#">Privacy</a></dd>
-        </dl>
-
-        <dl>
-          <dt class="text-serif">Resources</dt>
-          <dd><a href="#">Courses</a></dd>
-          <dd><a href="#">Hacks</a></dd>
-          <dd><a href="#">Free stuff</a></dd>
-        </dl>
+        <div class="primary-footer__inner-links text-sans">
+          <dl class="flow">
+            <dt>Map</dt>
+            <dd><a href="#">Blog</a></dd>
+            <dd><a href="#">Privacy</a></dd>
+          </dl>
+          <dl class="flow">
+            <dt>Resources</dt>
+            <dd><a href="#">Courses</a></dd>
+            <dd><a href="#">Hacks</a></dd>
+            <dd><a href="#">Free stuff</a></dd>
+          </dl>
+        </div>
       </div>
       <div class="split text-serif">
         <p class="copywrite">© 2020 acme. All rights reserved</p>
