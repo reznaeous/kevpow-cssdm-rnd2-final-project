@@ -29,10 +29,14 @@
 
   --spacer: 1rem;
 
+  --max-cont-width: 800px;
+  --body-margin: 0.5rem;
+
   @media screen and (width > 1000px) {
     --fs-500: 1.75rem;
     --fs-600: 2.125rem;
     --fs-900: 4.25rem;
+    --body-margin: 1.5rem;
   }
 }
 
@@ -43,12 +47,20 @@
   box-sizing: border-box;
 }
 
+body {
+  margin: var(--body-margin);
+}
+
 h1,
 h2,
 h3,
 h4,
-p {
+p,
+dl,
+dd,
+dt {
   margin: 0;
+  font-weight: inherit;
 }
 
 ul[class],
@@ -67,6 +79,9 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+  border: {
+    radius: var(--local-br, var(--br));
+  }
 }
 
 a {
@@ -88,9 +103,10 @@ body {
   &-header {
     background-image: url(img/hero.jpg);
     background-size: cover;
+    background-position: center;
     min-height: 25rem;
     border: {
-      radius: 1rem;
+      radius: var(--br);
     }
 
     &__inner {
@@ -109,6 +125,29 @@ body {
       gap: var(--spacer);
     }
   }
+
+  &-footer {
+    &__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: {
+        block: 0.75rem;
+        inline: 1rem;
+      }
+      & > * {
+        flex-basis: 100%;
+      }
+      &-links {
+        display: flex;
+        justify-content: space-around;
+
+        dd {
+          font-weight: var(--fw-700);
+        }
+      }
+    }
+  }
 }
 
 .page {
@@ -116,6 +155,7 @@ body {
     font: {
       size: var(--fs-900);
     }
+    line-height: 1.1;
   }
   &-intro {
     font: {
@@ -124,7 +164,18 @@ body {
   }
 }
 
+section {
+  padding: {
+    block: 3rem;
+  }
+}
+
 .section {
+  &-title {
+    font: {
+      weight: var(--fw-200);
+    }
+  }
   &-title,
   &-subtitle {
     font: {
@@ -133,11 +184,39 @@ body {
   }
 }
 
-.article-preview {
-  h3 {
+article {
+  max-width: 640px;
+}
+
+.article {
+  &-preview {
+    // Following lines shows how to override the
+    // border radius setting for this one instance
+    // img {
+    //   --local-br: 2rem;
+    // }
+    h3 {
+      font: {
+        size: var(--fs-500);
+        weight: var(--fw-300);
+      }
+    }
+    p {
+      font: {
+        family: var(--ff-sans);
+        weight: var(--fw-300);
+      }
+    }
+  }
+
+  &-info {
+    display: flex;
+    gap: var(--spacer);
+    color: var(--clr-neutral-400);
     font: {
-      size: var(--fs-500);
+      size: var(--fs-200);
       weight: var(--fw-300);
+      family: var(--ff-sans);
     }
   }
 }
@@ -150,21 +229,47 @@ body {
   border: unset;
   background-color: inherit;
   padding: {
-    inline: 1rem;
-    block: 0.75rem;
+    inline: 0.75rem;
+    block: 0.5rem;
   }
   font: {
     weight: var(--fw-700);
   }
+  border-radius: 0.75rem;
+
   &::after {
     content: '>';
     margin: {
       left: 1rem;
     }
   }
+
+  transition: background-color 200ms ease-in;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--clr-primary-400);
+  }
 }
 
+// Maybe some other day, but for now let this go
+// input:invalid {
+//   outline: 2px dashed red;
+// }
+
+// input:valid {
+//   outline: 2px solid green;
+// }
+
 /* Utility */
+
+.container {
+  max-width: var(--max-cont-width);
+  margin: {
+    inline: auto;
+  }
+}
+
 .flow > * + * {
   margin-top: var(--flow-spacer, var(--spacer));
 }
@@ -175,4 +280,29 @@ body {
 
 .bg-primary-300 {
   background-color: var(--clr-primary-300);
+}
+
+.text {
+  &-sans {
+    font-family: var(--ff-sans);
+  }
+  &-serif {
+    font-family: var(--ff-serif);
+  }
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--split-spacer, var(--spacer));
+
+  @media (width >= 700px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--split-spacer, var(--spacer));
+
+    & > * {
+      flex-basis: 100%;
+    }
+  }
 }
